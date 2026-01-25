@@ -1,0 +1,42 @@
+{
+  "name": "cypress-mcp-server",
+  "version": "1.0.0",
+  "description": "Model Context Protocol (MCP) server for Cypress test runner interaction - enables AI agents to run, monitor, and interact with Cypress tests",
+  "type": "module",
+  "main": "dist/index.js",
+  "bin": {
+    "cypress-mcp": "./dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "npx ts-node --esm src/index.ts"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "cypress",
+    "testing",
+    "e2e",
+    "ai",
+    "automation",
+    "test-runner"
+  ],
+  "author": "Guy Cohen",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://gitlab.com/guyco42-group/cypress-runner-mcp.git"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "typescript": "^5.0.0",
+    "ts-node": "^10.9.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

@@ -1,0 +1,101 @@
+stages:
+  - install
+  - build
+  - test
+  - publish
+
+variables:
+  NODE_VERSION: "18"
+
+# Install dependencies
+install:
+  stage: install
+  image: node:${NODE_VERSION}
+  script:
+    - npm ci
+  cache:
+    key: ${CI_COMMIT_REF_SLUG}
+    paths:
+      - node_modules/
+  artifacts:
+    paths:
+      - node_modules/
+    expire_in: 1 hour
+
+# Build TypeScript
+build:
+  stage: build
+  image: node:${NODE_VERSION}
+  dependencies:
+    - install
+  script:
+    - npm run build
+  artifacts:
+    paths:
+      - dist/
+    expire_in: 1 week
+  cache:
+    key: ${CI_COMMIT_REF_SLUG}
+    paths:
+      - node_modules/
+    policy: pull
+
+# Run tests (add when tests are implemented)
+test:
+  stage: test
+  image: node:${NODE_VERSION}
+  dependencies:
+    - install
+    - build
+  script:
+    - echo "Tests will be implemented in future versions"
+    # - npm test
+  cache:
+    key: ${CI_COMMIT_REF_SLUG}
+    paths:
+      - node_modules/
+    policy: pull
+
+# Security audit
+security:
+  stage: test
+  image: node:${NODE_VERSION}
+  dependencies:
+    - install
+  script:
+    - npm audit --audit-level=high
+  allow_failure: true
+  cache:
+    key: ${CI_COMMIT_REF_SLUG}
+    paths:
+      - node_modules/
+    policy: pull
+
+# Lint check (optional - add if you implement linting)
+# lint:
+#   stage: test
+#   image: node:${NODE_VERSION}
+#   dependencies:
+#     - install
+#   script:
+#     - npm run lint
+#   cache:
+#     key: ${CI_COMMIT_REF_SLUG}
+#     paths:
+#       - node_modules/
+#     policy: pull
+
+# Publish to npm (only on tags)
+publish:
+  stage: publish
+  image: node:${NODE_VERSION}
+  dependencies:
+    - build
+  script:
+    - echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > .npmrc
+    - npm publish
+  only:
+    - tags
+  except:
+    - branches
+  when: manual
