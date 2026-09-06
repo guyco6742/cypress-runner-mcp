@@ -443,8 +443,8 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 If you encounter issues or have questions:
 
 1. Check the [Troubleshooting](#-troubleshooting) section
-2. Search [existing issues](https://github.com/guyco6742/cypress-runner-mcp/-/issues)
-3. Create a [new issue](https://github.com/guyco6742/cypress-runner-mcp/-/issues/new) with details
+2. Search [existing issues](https://github.com/guyco6742/cypress-runner-mcp/issues)
+3. Create a [new issue](https://github.com/guyco6742/cypress-runner-mcp/issues/new) with details
 
 ---
 
