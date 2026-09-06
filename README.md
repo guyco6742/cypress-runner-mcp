@@ -50,7 +50,7 @@ A **Model Context Protocol (MCP)** server that enables AI agents (like Claude, G
 
 ```bash
 # Clone the repository
-git clone https://gitlab.com/guyco42-group/cypress-runner-mcp.git
+git clone https://github.com/guyco6742/cypress-runner-mcp.git
 cd cypress-runner-mcp
 
 # Install dependencies (choose one)
